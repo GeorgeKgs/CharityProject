@@ -1,0 +1,436 @@
+﻿@model CharityProject.Entities.CartEntities.ProductVm
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+
+    a:link {
+        text-decoration: none;
+    }
+
+    .productCardContainer {
+        padding: 5px;
+    }
+
+    .productCardContent {
+        position: relative;
+        overflow: hidden;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        border: 3px solid #2a4185;
+        background: #0050a0;
+        -webkit-transition: all 300ms ease-out;
+        -moz-transition: all 300ms ease-out;
+        -o-transition: all 300ms ease-out;
+        transition: all 300ms ease-out;
+    }
+
+        .productCardContent .productCardImage {
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .productCardContent .productCardImage img {
+                position: relative;
+                display: block;
+                min-height: 200px;
+                min-width: 100%;
+                max-width: 100%;
+                opacity: 1;
+                -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+                transition: opacity 0.35s, transform 0.35s;
+                -webkit-transform: scale(1.15);
+                transform: scale(1.15);
+            }
+
+        .productCardContent:hover .productCardImage img {
+            opacity: 0.8;
+            -webkit-transform: scale(1);
+            transform: scale(1);
+        }
+
+        .productCardContent .productCardImage .imageCardEffect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 30px 10px;
+            -webkit-backface-visibility: hidden;
+            -moz-backface-visibility: hidden;
+            backface-visibility: hidden;
+            text-indent: 9999px;
+        }
+
+            .productCardContent .productCardImage .imageCardEffect::before,
+            .productCardContent .productCardImage .imageCardEffect::after {
+                pointer-events: none;
+            }
+
+            .productCardContent .productCardImage .imageCardEffect::before {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(255,255,255,0.5);
+                content: '';
+                -webkit-transition: -webkit-transform 0.6s;
+                transition: transform 0.6s;
+                -webkit-transform: rotate(45deg) scale(2) translate(0px, -100%);
+                -moz-transform: rotate(45deg) scale(2) translate(0px, -100%);
+                -o-transform: rotate(45deg) scale(2) translate(0px, -100%);
+                -ms-transform: rotate(45deg) scale(2) translate(0px, -100%);
+                transform: rotate(45deg) scale(2.5) translate(0px, -100%);
+            }
+
+        .productCardContent:hover .productCardImage .imageCardEffect::before {
+            -webkit-transform: rotate(45deg) scale(2) translate(0px, 100%);
+            -moz-transform: rotate(45deg) scale(2) translate(0px, 100%);
+            -o-transform: rotate(45deg) scale(2) translate(0px, 100%);
+            -ms-transform: rotate(45deg) scale(2) translate(0px, 100%);
+            transform: rotate(45deg) scale(2.5) translate(0px, 100%);
+        }
+
+    /*======================== Card Details Style */
+    .productCardDetails {
+        position: relative;
+        overflow: hidden;
+        background: #FFFFFF;
+        -webkit-transition: all 300ms ease-out;
+        -moz-transition: all 300ms ease-out;
+        -o-transition: all 300ms ease-out;
+        transition: all 300ms ease-out;
+    }
+
+        .productCardDetails .productCardModel {
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            padding: 20px 20px 10px 20px;
+        }
+
+            .productCardDetails .productCardModel a:link, .productCardDetails .productCardModel .accessoryDesc {
+                color: #2a4185;
+                position: relative;
+                font-size: 20px;
+                font-weight: bold;
+                margin: 0;
+                padding: 0;
+                display: block;
+                -webkit-transition: all 300ms ease-out;
+                -moz-transition: all 300ms ease-out;
+                -o-transition: all 300ms ease-out;
+                transition: all 300ms ease-out;
+            }
+
+                .productCardDetails .productCardModel a span, .productCardDetails .productCardModel .accessoryDesc span {
+                    font-size: 18px;
+                    display: block;
+                }
+
+                    .productCardDetails .productCardModel a span b, .productCardDetails .productCardModel .accessoryDesc span b {
+                        font-size: 12px;
+                        font-weight: normal;
+                    }
+
+    .productCardContent:hover .productCardDetails .productCardModel a, .productCardContent:hover .productCardDetails .productCardModel .accessoryDesc {
+        color: #e65059;
+    }
+
+    .modelCardEffect {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        -webkit-backface-visibility: hidden;
+        -moz-backface-visibility: hidden;
+        backface-visibility: hidden;
+    }
+
+    .productCardContent .productCardDetails .modelCardEffect::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #2a4185;
+        content: '';
+        -webkit-transition: -webkit-transform 0.6s;
+        transition: transform 0.6s;
+        -webkit-transform: skew(40deg, 0deg) translate(-150%, 0px);
+        -moz-transform: skew(40deg, 0deg) translate(-150%, 0px);
+        -o-transform: skew(40deg, 0deg) translate(-150%, 0px);
+        -ms-transform: skew(40deg, 0deg) translate(-150%, 0px);
+        transform: skew(40deg, 0deg) translate(-150%, 0px);
+    }
+
+    .productCardContent:hover .productCardDetails .modelCardEffect::before {
+        -webkit-transform: skew(0deg, 0deg) translate(0%, 0px);
+        -moz-transform: skew(0deg, 0deg) translate(0%, 0px);
+        -o-transform: skew(0deg, 0deg) translate(0%, 0px);
+        -ms-transform: skew(0deg, 0deg) translate(0%, 0px);
+        transform: skew(0deg, 0deg) translate(0%, 0px);
+    }
+
+    .productCardContent .productCardDetails .productCardDetailsList {
+        position: relative;
+        height: 150px;
+    }
+
+        .productCardContent .productCardDetails .productCardDetailsList .list-group {
+            margin-bottom: 0 !important;
+        }
+
+            .productCardContent .productCardDetails .productCardDetailsList .list-group .list-group-item {
+                color: #2a4185 !important;
+            }
+
+                .productCardContent .productCardDetails .productCardDetailsList .list-group .list-group-item .detailIcon {
+                    position: relative;
+                    width: 40px;
+                    padding-left: 10px;
+                    display: table-cell;
+                    vertical-align: middle;
+                    font-size: 25px;
+                }
+
+                .productCardContent .productCardDetails .productCardDetailsList .list-group .list-group-item .detailInfo {
+                    display: table-cell;
+                    vertical-align: middle;
+                }
+
+    .productCardContent .productCardDetails .accessoryCardDetailsList {
+        position: relative;
+        height: 50px;
+    }
+
+        .productCardContent .productCardDetails .accessoryCardDetailsList .list-group {
+            margin-bottom: 0 !important;
+        }
+
+            .productCardContent .productCardDetails .accessoryCardDetailsList .list-group .list-group-item {
+                color: #2a4185 !important;
+            }
+
+                .productCardContent .productCardDetails .accessoryCardDetailsList .list-group .list-group-item .detailIcon {
+                    position: relative;
+                    width: 40px;
+                    padding-left: 10px;
+                    display: table-cell;
+                    vertical-align: middle;
+                    font-size: 25px;
+                }
+
+                .productCardContent .productCardDetails .accessoryCardDetailsList .list-group .list-group-item .detailInfo {
+                    display: table-cell;
+                    vertical-align: middle;
+                }
+
+    .productCardContent .productCardPrice {
+        position: relative;
+        text-align: center;
+    }
+
+        .productCardContent .productCardPrice a, .productCardContent .productCardPrice button {
+            border: none !important;
+            width: 40%;
+            margin: 4% !important;
+            padding: 0 !important;
+            text-align: center;
+            line-height: 35px;
+            background: transparent;
+            color: #2a4185;
+            -webkit-transition: all 100ms ease-out;
+            -moz-transition: all 100ms ease-out;
+            -o-transition: all 100ms ease-out;
+            transition: all 100ms ease-out;
+        }
+
+    .productCardContent:hover .productCardPrice a, .productCardContent:hover .productCardPrice button {
+        background: #2a4185;
+        color: #e65059;
+    }
+
+    .productCardPrice a:hover, .productCardPrice a:focus, .productCardPrice a:hover, .productCardPrice button:focus {
+        background: #e65059;
+        color: #2a4185;
+    }
+
+    .productCardContent .productCardPrice .inCart, .productCardPrice .inCart:focus {
+        color: #2a4185 !important;
+        background: #81c868 !important;
+    }
+
+    .accessoryAdminCard {
+        background: #FFFFFF;
+        padding: 10px;
+    }
+</style>
+
+
+
+<div class="hero-wrap" style="background-image: url('/images/merch.jpg');" data-stellar-background-ratio="0.5">
+
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
+            <div class="col-md-7 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
+                <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
+                    <span class="mr-2">
+                        @Html.ActionLink("Home", "Index", "Home")
+                    </span> <span>Merchandise</span>
+                </p>
+                <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"></h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<section style="height:60px; margin-top:35px; background-color:mintcream">
+
+
+
+    @Html.ActionLink("Go to Cart", "Cart", "EShop", 
+    new { @class = "btn btn-info", @style = " padding:15px; margin-top:10px; width: 40%; margin-left: 30%; margin-right: 30%" })
+    <br />
+   
+</section>
+
+
+
+<section class="ftco-section" style="background-color:mintcream">
+    <div class="container" style="margin-bottom:10px">
+        @using (Html.BeginForm("Index", "EShop", FormMethod.Get))
+        {
+
+            @Html.DropDownList("NumberOfItems", new SelectList(ViewBag.NumberOfItems), "All",
+                new { style = "padding:9px; width:190px; margin-left:10px; border-radius:3px" }) ;
+
+            <input type="submit" name="NumberOfItems" value="Search" class="btn btn-primary subnav__item" />
+        }
+    </div>
+    <div class="container">
+
+        <div class="row d-flex">
+
+           
+            @foreach (var item in Model.Products)
+            {
+
+
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+                    <div class="productCardContainer">
+                        <div class="productCardContent">
+                            <div class="productCardImage">
+                                
+                                <img src="@item.ImageUrl" alt="" />
+
+                            </div>
+                            <div class="productCardDetails">
+                                <div class="productCardModel">
+                                    <span class="modelCardEffect"></span>
+                                    <a href="">
+                                        @item.Name
+                                        <span>Price: @((item.Price / 1M).ToString("0.00")) EUR</span>
+                                    </a>
+                                </div>
+                                <div class="productCardDetailsList">
+                                    <div class="list-group">
+                                        <a href="" class="list-group-item">
+                                            <span class="detailIcon">
+                                                <i class="fa fa-dot-circle-o"></i>
+                                            </span>
+                                            <span class="detailInfo">
+                                                Size: @item.Size
+                                            </span>
+                                        </a>
+                                        <p class="detailInfo" style="text-align:center"> Buy a t-shirt and help our Cause </p>
+                                    </div>
+                                </div>
+                                <div class="productCardPrice">
+
+                                    @using (Html.BeginForm("Add", "EShop", FormMethod.Post))
+                                    {
+                                        @Html.Hidden("ProductId", item.Id)
+                                        <button type="submit" class="btn btn-warning">Add to cart</button>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                @*<div class="col-md-4 d-flex ftco-animate">
+                        <div class="blog-entry align-self-stretch">
+                            <a href="blog-single.html" class="block-20" style="background-image: url('/images/bg_2.jpg');">
+                            </a>
+                            <div class="text p-4 d-block">
+
+
+                                <h3 class="heading mt-3">@item.Name</h3>
+
+                                <div class="meta mb-3">
+
+                                    <div>Size: @item.Size</div>
+                                    <div>Price: @((item.Price / 100M).ToString("0.00"))  €</div>
+                                </div>
+
+
+                                @using (Html.BeginForm("Add", "EShop", FormMethod.Post))
+                                {
+                                    @Html.Hidden("ProductId", item.Id)
+                                    <button type="submit" class="btn btn-warning">Add to cart</button>
+                                }
+
+                                @if (User.IsInRole("admin"))
+                                {
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                                }
+
+
+
+                            </div>
+                        </div>
+                    </div>*@
+
+
+            }
+
+
+
+
+        </div>
+    </div>
+
+</section>
+

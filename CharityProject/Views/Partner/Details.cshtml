@@ -1,0 +1,59 @@
+﻿@model CharityProject.Entities.DomainClasses.Partner
+
+@{
+    ViewBag.Title = "Details";
+}
+
+    <div class="container-fluid" style="margin-bottom:10px;height:90px;background-image: radial-gradient(circle farthest-corner at center, #3C4B57 0%, #1C262B 100%);">
+
+    </div>
+
+
+<!-- Page Content -->
+    <div class="container">
+        <p>
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-outline-warning" })
+        </p>
+       
+        <h1 class="my-4">
+            @Model.Name <br />
+            <small><strong>@Model.Country</strong></small>
+            <small style="font-size:24px">@Model.Address</small>
+        </h1>
+
+
+        
+        <div class="row">
+
+            <div class="col-md-8">
+                <img class="img-fluid" src="@Model.ImageUrl" style="width:100%" alt="">
+
+                <div class="col">
+                    <h3 class="my-3">Donation Details</h3>
+                    <p>Donations:</p>
+                    @Html.DropDownListFor(modelItem => Model.Donations, new SelectList(Model.Donations, "DonationId", "Title"), new {@class="form-control" })
+
+                    <p>Subscriptions:</p>
+                    @Html.DropDownListFor(modelItem => Model.Subscriptions, new SelectList(Model.Subscriptions, "Id", "Title"), new {@class="form-control" })
+                </div>
+            </div>
+
+            
+
+                <div class="col-md-4">
+                    <h3 class="my-3">Description</h3>
+                    <p>@Model.Description</p>
+                </div>
+
+
+        </div>
+
+        <div class="row">
+         
+        </div>
+        <div style="height:50px">
+
+
+        </div>
+
+    </div>

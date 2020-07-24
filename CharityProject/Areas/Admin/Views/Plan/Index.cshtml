@@ -1,0 +1,47 @@
+﻿@model IEnumerable<CharityProject.Entities.DomainClasses.Plan>
+
+@{
+    ViewBag.Title = "Plans";
+}
+<div class="container">
+    <h2>Plans</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Donations)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Subscriptions)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category)
+                </td>
+                <td>
+                    @Html.DropDownListFor(modelItem => item.Donations, new SelectList(item.Donations, "DonationId", "Title"), new {@class="form-control" })
+                </td>
+                <td>
+                    @Html.DropDownListFor(modelItem => item.Subscriptions, new SelectList(item.Subscriptions, "Id", "Title") , new {@class="form-control" })
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.PlanId }, new { @class = "btn btn-primary" })
+
+                    @Html.ActionLink("Delete", "Delete", new { id = item.PlanId }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+
+    </table>
+ </div>

@@ -1,0 +1,297 @@
+﻿@model CharityProject.Entities.ViewModels.IndexVm
+
+
+
+<style>
+    .jumbotron {
+        position: relative;
+        overflow: hidden;
+    }
+
+        .jumbotron .container {
+            position: relative;
+            z-index: 2;
+            background: rgba(0,0,0,0.2);
+            padding: 2rem;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 3px;
+            height: 400px;
+        }
+
+    .jumbotron-background {
+        object-fit: cover;
+        font-family: 'object-fit: cover;';
+        position: absolute;
+        top: 0;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        opacity: 0.5;
+    }
+
+    img.blur {
+        -webkit-filter: blur(3px);
+        filter: blur(3px);
+        filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='3');
+    }
+
+
+    .parallax {
+        /* The image used */
+        background-image: url("/images/unicef.jpg");
+        /* Set a specific height */
+        height: 450px;
+        /* Create the parallax scrolling effect */
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+
+    .parallaxpartners {
+        /* The image used */
+        background-image: url("/images/reema.jpg");
+        /* Set a specific height */
+        height: 450px;
+        /* Create the parallax scrolling effect */
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
+
+
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@* -------------KENTRIKH FWTOGRAFIA--------------------------------------------------------------------- *@
+<div class="hero-wrap" style="background-image: url(/images/indeximg.jpg);" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
+            <div class="col-md-7 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
+                <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Doing Nothing is Not An Option of Our Life</h1>
+
+                <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><a href="https://vimeo.com/280561690" class="btn btn-white btn-outline-white px-4 py-3 popup-vimeo"><span class="icon-play mr-2"></span>Watch Video</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* --------------------Banner kentriko me ta 3 koumpia ---------------------------------------------- *@
+<section class="ftco-counter ftco-intro" id="section-counter">
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-md-5 d-flex justify-content-center counter-wrap ftco-animate">
+                <div class="block-18 color-1 align-items-stretch">
+                    <div class="text">
+                        <span>Current Online Projects</span>
+                        <span style="font-size:48px; text-align:center" class="number" id="totalnumber"> 0 </span>
+                        <span>We serve partners across the world</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+                <div class="block-18 color-2 align-items-stretch">
+                    <div class="text">
+                        <h3 class="mb-4">Donate Money</h3>
+                        <p>Even the all-powerful Pointing has no control about the blind texts.</p>
+                        <p> @Html.ActionLink("Donate Now!", "Index", "Cause", null, new { @class = "btn btn-white px-3 py-2 mt-2" })  </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+                <div class="block-18 color-3 align-items-stretch">
+                    <div class="text">
+                        <h3 class="mb-4">Be a Volunteer</h3>
+                        <p>Even the all-powerful Pointing has no control about the blind texts.</p>
+                        <p> @Html.ActionLink("Sign Now!", "About", "Home", null, new { @class = "btn btn-white px-3 py-2 mt-2" }) </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+@* ----------------DONATIONS CAROUSEL------------------------------------------------------------------- *@
+
+<section class="ftco-section bg-light">
+    <div class="container-fluid">
+        <div class="row justify-content-center mb-5 pb-3">
+            <div class="col-md-5 heading-section ftco-animate text-center">
+                <h2 class="mb-4">Donations</h2>
+                <p>We connect nonprofits, donors, and companies in nearly every country around the world. See Our Donations.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 ftco-animate">
+                <div class="carousel-cause owl-carousel">
+
+                    @foreach (var item in Model.Donations)
+                    {
+
+                        <div class="item">
+                            <div class="cause-entry" style=" width:100%; background-color:rgba(255, 106, 0, 0.05)">
+                                <a href="#" class="img" style="background-image: url(@item.Partner.ImageUrl);"></a>
+                                <div class="text p-3 p-md-4">
+                                    <h4><a href="#">@item.Title</a></h4>
+                                    <h2>Goal: @item.Price $</h2>
+                                    <p class="small" style="height:40px">@item.Description</p>
+
+                                    <p><strong>Plan: </strong>@item.Plan.Category</p>
+                                    <p><strong>Partner: </strong>@item.Partner.Name</p>
+                                    <p><strong>Country: </strong>@item.Partner.Country</p>
+
+                                    <div class="progress custom-progress-success">
+                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    @Html.ActionLink("Donate now!", "Details", "Donation", new { id = item.DonationId }, new { @class = "btn btn-info" })
+
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+@* ------------------------------------------PARALLAX IMAGE---------------------------------------------*@
+
+<div class="parallax container-fluid"></div>
+
+@* ------------------------------------------SUBSCRIPTIONS CAROUSEL---------------------------------------------*@
+
+
+
+<section class="ftco-section bg-light">
+    <div class="container-fluid">
+        <div class="row justify-content-center mb-5 pb-3">
+            <div class="col-md-5 heading-section ftco-animate text-center">
+                <h2 class="mb-4">Subscriptions</h2>
+                <p>We connect nonprofits, donors, and companies in nearly every country around the world. See Our Subscriptions</p>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 ftco-animate">
+                <div class="carousel-cause owl-carousel">
+
+
+                    @foreach (var item in Model.Subscriptions)
+                    {
+
+                        <div class="item">
+                            <div class="cause-entry" style=" width:100%; background-color:rgba(9, 93, 0, 0.08)">
+                                <a href="#" class="img" style="background-image: url(@item.Partner.ImageUrl);"></a>
+                                <div class="text p-3 p-md-4">
+
+                                    <h4><a href="#">@item.Title</a></h4>
+                                    <p class="small" style="height:40px">@item.Description</p>
+
+                                    <p><strong>Plan: </strong>@item.Plan.Category</p>
+                                    <p><strong>Partner: </strong>@item.Partner.Name</p>
+                                    <p><strong>Country: </strong>@item.Partner.Country</p>
+
+                                    <div class="progress custom-progress-success">
+                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    @Html.ActionLink("Subscribe now!", "Details", "Subscription", new { id = item.Id }, new { @class = "btn btn-info" })
+
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-------------------------------PARTNERS Section--------------------------->
+<section>
+    @* ------------------------------------------PARALLAX IMAGE---------------------------------------------*@
+
+    <div class="parallaxpartners container-fluid"></div>
+
+
+</section>
+
+
+
+<div ng-app="myAPP" class="container">
+
+    <h4> Population Statistics</h4>
+    <div>
+
+        <a class="btn btn-outline-info" href="#!chartA">Chart A</a>
+        <a class="btn btn-outline-info" href="#!chartB">Chart B</a>
+    </div>
+
+
+    <div ng-view></div>
+
+</div>
+
+
+@Html.Partial("_BeAVolunteer")
+
+
+
+@section scripts{
+
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular-route.min.js"></script>
+    <script src="~/AngularPartials/Application/app.js"></script>
+    <script src="~/AngularPartials/Controllers/EventsController.js"></script>
+    <script src="~/AngularPartials/Controllers/GalleryController.js"></script>
+
+
+    <script>
+
+            $(document).ready(function () {
+
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    cache: false,
+                    contentType: "application/json",
+                    url: "@Url.Action("GetStats", "REST")",
+
+                    success: function (data) {
+
+
+                    }
+
+                }).then(function (data) {
+                     $('#totalnumber').attr('data-number', data);
+
+                });
+
+            });
+
+    </script>
+
+}
+
+

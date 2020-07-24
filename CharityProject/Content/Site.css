@@ -1,0 +1,246 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    padding-top: unset;
+    padding-bottom: unset;
+    color: slategray;
+    
+}
+
+/*------ADMIN BODY BACKGROUND IMAGE----------------*/
+#bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    /* Preserve aspet ratio */
+    min-width: 100%;
+    min-height: 100%;
+    width: 100%;
+    height: auto;
+    margin: auto;
+    overflow: auto;
+    z-index: -100;
+    opacity:0.7;
+}
+
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+#three-container {
+    margin: 0;
+    overflow: hidden;
+    width: 100%;
+}
+
+/*------------------------------ADMIN NAVBAR SIDEBAR-----------------------------------------------------------------*/
+
+#sidebar {
+    position: fixed;
+    width: 220px;
+    height: 100%;
+    background: #151719;
+    left: -200px;
+    transition: all 500ms linear;
+    z-index: 1000;
+}
+
+    #sidebar.active {
+        left: 0px;
+    }
+
+    #sidebar ul li {
+        color: rgba(230,230,230,0.9);
+        list-style: none;
+        padding: 15px 10px;
+        border-bottom: 1px solid rgba(100,100,100,0.3);
+    }
+
+    #sidebar .toggle-btn {
+        position: absolute;
+        left: 230px;
+        top: 20px;
+    }
+
+        #sidebar .toggle-btn span {
+            display: block;
+            width: 30px;
+            height: 5px;
+            background: #151719;
+            margin: 5px 0px;
+        }
+
+navbar {
+    position: relative;
+    height: 150px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.26);
+}
+
+
+.toggle-btn:hover {
+    cursor: pointer;
+}
+
+
+.chatbox {
+   padding:30px;
+
+}
+
+.chathistory {
+    padding: 30px;
+}
+
+/*---------------------------------------------------------------------------------------------------------*/
+
+.paypalbuttons{
+
+    margin-top: 8px;
+}
+
+
+
+
+
+.dl-horizontal dt {
+    white-space: normal;
+}
+/*
+Login Form
+*/
+.btn-facebook {
+    background: #305c99;
+    color: #fff;
+}
+
+.btn-google:hover {
+    background: #b22222;
+    color: #fff;
+}
+
+.btn-facebook:hover {
+    background: #2b4db1;
+    color: #fff;
+}
+
+.btn-twitter:hover {
+    background: #007bb6;
+    color: #fff;
+}
+
+.btn-twitter {
+    background: #00cdff;
+    color: #fff;
+}
+
+.btn-google {
+    background: #d24228;
+    color: #fff;
+}
+
+.btn-linkedin {
+    background: #007bb6;
+    color: #fff;
+}
+
+.btn-block {
+    margin: 3px 0 !important;
+}
+
+.form-group {
+    margin-left: 15px !important;
+    margin-right: 15px !important;
+}
+
+#loginForm {
+    align-items: center;
+}
+
+.remember-me {
+    margin-bottom: 8px;
+}
+
+.split-div {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    padding-bottom: 0.5em;
+    padding-top: 0.5em;
+    position: relative;
+}
+
+.split-span {
+    background-color: white;
+    display: block;
+    left: 40%;
+    margin-left: -1.5em;
+    position: absolute;
+    text-align: center;
+    top: -0.3em;
+    width: 8em;
+}
+
+.split-hr {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.social-icon {
+    margin-right: 15px;
+}
+
+/*------------------------------------------------------------------------------*/
+
+#donationbackground {
+    position: fixed;
+    top: 0;
+    left: 0;
+    /* Preserve aspet ratio */
+    min-width: 100%;
+    min-height: 100%;
+    width: 100%;
+    height: auto;
+    margin: auto;
+    overflow: auto;
+    z-index: -100;
+    opacity:0.8;
+}
+
+
+#subscriptionbackground {
+    position: fixed;
+    top: 0;
+    left: 0;
+    /* Preserve aspet ratio */
+    min-width: 100%;
+    min-height: 100%;
+    width: 100%;
+    height: auto;
+    margin: auto;
+    overflow: auto;
+    z-index: -100;
+    opacity: 0.8;
+}
+
+
+
+
+/*------------------------------------------------------------------------------------------------------*/
+

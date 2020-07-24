@@ -1,0 +1,60 @@
+﻿@model IEnumerable<CharityProject.Entities.DomainClasses.Donation>
+
+@{
+    ViewBag.Title = "Index";
+}
+    <div class="container">
+        <h2>Donations</h2>
+
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Partner.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Plan.Category)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Partner.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Plan.Category)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        <p>Press Edit for Description Details...</p>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.DonationId }, new { @class = "btn btn-primary" })
+
+                        @Html.ActionLink("Delete", "Delete", new { id = item.DonationId }, new { @class = "btn btn-danger" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>

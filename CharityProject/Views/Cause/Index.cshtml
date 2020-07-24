@@ -1,0 +1,272 @@
+﻿@model CharityProject.Entities.ViewModels.IndexVm
+
+
+<style>
+
+    .nav {
+        position: sticky;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 45px;
+        top: 0;
+    }
+
+    .subnav {
+        position: sticky;
+        bottom: 0;
+        top: 60px;
+        z-index: 1000;
+    }
+
+
+    .hero {
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: #bbdefb;
+    }
+
+        .hero h1 {
+            font-size: 6em;
+            margin: 0 90px;
+            text-align: center;
+        }
+
+    .subnav {
+        background: #fff;
+        border-bottom: 1px solid #222;
+    }
+
+    .subnav__container {
+        align-items: baseline;
+        display: flex;
+        margin: 0 60px;
+        padding: 10px 0;
+    }
+
+    .subnav__title {
+        font-size: 1.25em;
+    }
+
+    .subnav__list {
+        margin: 0 15px;
+    }
+
+    .subnav__item {
+        display: inline-block;
+        margin: 0 8px;
+        padding: 5px;
+    }
+
+    .section {
+        max-width: 900px;
+        margin: 60px auto;
+        padding: 90px 30px;
+        background-color: #ffcdd2;
+        text-align: center;
+    }
+
+        .section h2 {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .section p {
+            line-height: 1.625em;
+            margin: 0 auto;
+            max-width: 480px;
+        }
+
+    footer {
+        text-align: center;
+    }
+
+
+    .parallax {
+        /* The image used */
+        background-image: url("/images/image_3.jpg");
+        /* Set a specific height */
+        height: 400px;
+        /* Create the parallax scrolling effect */
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
+
+
+
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div style="background-image: radial-gradient(circle farthest-corner at center, #3C4B57 0%, #1C262B 100%);">
+    <div class="hero-wrap" style="background-image: url('/images/charity.jpg');" data-stellar-background-ratio="0.5">
+
+
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
+                <div class="col-md-7 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
+                    <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
+                        <span class="mr-2">
+                            @Html.ActionLink("Home", "Index", "Home")
+                        </span> <span>Aid Our Cause</span>
+                    </p>
+                    <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"></h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="subnav">
+        <div class="subnav__container">
+            <div class="subnav__title">
+                <h3>Cause</h3>
+            </div>
+            <ul class="subnav__list">
+                <li class="subnav__item"> <a href="#donationdiv">Donations</a></li>
+                <li class="subnav__item"> <a href="#subscriptiondiv">Subscriptions</a></li>
+                <li class="subnav__item">
+                    <p>
+
+                        @using (Html.BeginForm("Index", "Cause", FormMethod.Get))
+                        {
+
+                            @Html.DropDownList("category", new SelectList(ViewBag.Categories), "Select Plan", new { style = "padding:9px; width:190px; margin-left:10px; border-radius:3px" }) ;
+                            @Html.DropDownList("NumberOfItems", new SelectList(ViewBag.NumberOfItems), "Number of Items", new { style = "padding:9px; width:190px; margin-left:10px; border-radius:3px" }) ;
+
+                            <input type="submit" name="category" value="Search" class="btn btn-primary subnav__item" />
+                        }
+
+                      
+                    </p>
+
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+
+
+
+
+    <section class="ftco-section" id="donationdiv">
+        <div class="container">
+            <h2 style="color:azure; margin-bottom:10px">Donations</h2>
+            <div class="row" id="easyPaginate">
+
+
+                @foreach (var item in Model.Donations)
+                {
+
+
+
+                    <div class="col-md-4 d-flex ftco-animate ">
+                        <div class="blog-entry align-self-stretch" style="width:100%">
+                            <p  class="block-20" style="background-image: url(@item.Partner.ImageUrl)" ;">
+                            </p>
+                            <div class="text p-4 d-block">
+                                <div class="meta mb-3">
+                                </div>
+                                <h3 class="heading mb-4">@item.Title</h3>
+                                <p class="time-loc">Partner: @item.Partner.Name</p>
+                                <h5>Plan: @item.Plan.Category</h5>
+                                <p class="small" style="height:40px">@item.Description</p>
+
+                                @Html.ActionLink("Donate", "Details", "Donation", new { id = item.DonationId }, new { @class = "btn btn-info" })
+                            </div>
+                        </div>
+                    </div>
+
+                }
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <div class="parallax container-fluid"></div>
+
+
+
+
+
+    <section class="ftco-section" id="subscriptiondiv">
+        <div class="container">
+            <h2 style="color:azure; margin-bottom:10px">Subscriptions</h2>
+            <div class="row">
+
+
+                @foreach (var item in Model.Subscriptions)
+                {
+
+             
+                    <div class="col-md-4 d-flex ftco-animate ">
+                        <div class="blog-entry align-self-stretch" style="width:100%">
+                            <p  class="block-20" style="background-image: url(@item.Partner.ImageUrl)" ;">
+                            </p>
+                            <div class="text p-4 d-block">
+                                <div class="meta mb-3">
+                                </div>
+                                <h3 class="heading mb-4">@item.Title</h3>
+                                <p class="time-loc">Partner: @item.Partner.Name</p>
+
+                                <h5>Plan: @item.Plan.Category</h5>
+                                <p class="small" style="height:40px">@item.Description</p>
+
+                                @Html.ActionLink("Subscribe!", "Details", "Subscription", new { id = item.Id }, new { @class = "btn btn-info" })
+                            </div>
+                        </div>
+                    </div>
+                
+                }
+
+            </div>
+        </div>
+    </section>
+
+
+</div>
+
+
+
+
+@section scripts{
+
+
+   
+
+
+
+    <script>
+
+
+        $('a[href*="#"]').click(function (e) {
+            e.preventDefault();
+            var target = this.hash;
+            $target = $(target);
+
+            $('html, body').stop().animate({
+                'scrollTop': $target.offset().top
+            }, 900, 'swing', function () {
+                window.location.hash = target;
+            });
+        });
+
+
+
+    </script>
+
+
+}

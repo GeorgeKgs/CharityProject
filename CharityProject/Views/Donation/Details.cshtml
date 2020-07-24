@@ -1,0 +1,83 @@
+﻿@model CharityProject.Entities.DomainClasses.Donation
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+
+<div class="container-fluid" style="height:90px;background-image: radial-gradient(circle farthest-corner at center, #3C4B57 0%, #1C262B 100%);">
+
+</div>
+
+
+<!-- Page Content -->
+<div class="container" style="margin:30px">
+    <p>
+
+        @Html.ActionLink("Back to Cause Page", "Index", "Cause", null, new { @class = "btn btn-outline-warning" })
+    </p>
+    <!-- Portfolio Item Heading -->
+    <h1 class="my-4">
+        @Model.Title <br />
+        <small>Partner: <strong>@Model.Partner.Name</strong></small>
+        <small style="font-size:24px">( @Model.Partner.Country</small>
+        <small style="font-size:24px">@Model.Partner.Address )</small>
+    </h1>
+
+
+    <!-- Portfolio Item Row -->
+    <div class="row">
+
+        <div class="col-md-8">
+            <img class="img-fluid" src="@Model.Partner.ImageUrl" style="width:100%" alt="">
+        </div>
+
+        <div class="col-md-4">
+            <h3 class="my-3">Description</h3>
+            <p class="small" style="height:40px">@Model.Description</p>
+            <br />
+            <h3 class="my-3" style="margin-left:10px"> Donate Now !</h3>
+
+            <div>
+
+                <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
+            <input type="hidden" name="cmd" value="_s-xclick" />
+            <input type="hidden" name="hosted_button_id" value="6EE8TMT9GX58A" />
+            <input type="image" src="~/images/paypal-donate-icon-27.jpg" style="width:160px" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+            <img alt="" border="0" src="https://www.sandbox.paypal.com/en_GR/i/scr/pixel.gif" width="1" height="1" />
+                </form>
+
+             
+            </div>
+
+
+
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,203 @@
+﻿@model CharityProject.Entities.CartEntities.Cart
+
+@{
+    ViewBag.Title = "Cart";
+}
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+<style>
+
+    .bloc_left_price {
+        color: #c01508;
+        text-align: center;
+        font-weight: bold;
+        font-size: 150%;
+    }
+
+    .category_block li:hover {
+        background-color: #007bff;
+    }
+
+        .category_block li:hover a {
+            color: #ffffff;
+        }
+
+    .category_block li a {
+        color: #343a40;
+    }
+
+    .add_to_cart_block .price {
+        color: #c01508;
+        text-align: center;
+        font-weight: bold;
+        font-size: 200%;
+        margin-bottom: 0;
+    }
+
+    .add_to_cart_block .price_discounted {
+        color: #343a40;
+        text-align: center;
+        text-decoration: line-through;
+        font-size: 140%;
+    }
+
+    .product_rassurance {
+        padding: 10px;
+        margin-top: 15px;
+        background: #ffffff;
+        border: 1px solid #6c757d;
+        color: #6c757d;
+    }
+
+        .product_rassurance .list-inline {
+            margin-bottom: 0;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+            .product_rassurance .list-inline li:hover {
+                color: #343a40;
+            }
+
+    .reviews_product .fa-star {
+        color: gold;
+    }
+
+    .pagination {
+        margin-top: 20px;
+    }
+
+    .example_c {
+        color: #494949 !important;
+        text-transform: uppercase;
+        text-decoration: none;
+        background: #ffffff;
+        padding: 4px;
+        border: 4px solid #494949 !important;
+        display: inline-block;
+        transition: all 0.4s ease 0s;
+    }
+
+        .example_c:hover {
+            color: #ffffff !important;
+            background: #f6b93b;
+            border-color: #f6b93b !important;
+            transition: all 0.4s ease 0s;
+            
+            }
+
+</style>
+
+
+
+<div class="container-fluid"  style="margin-bottom:10px;height:85px;
+     background-image: radial-gradient(circle farthest-corner at center, #3C4B57 0%, #1C262B 100%);">
+
+</div>
+
+<section id="cartinfo" class="form-group" style="height:70px">
+    <div class="button_cont" align="center">
+        @Html.ActionLink("Continue Shopping", "Index", "EShop", 
+       new { @class="btn btn-outline-warning",  @style = " margin-right:60px; margin-top:10px; float:right" })
+    </div>
+</section>
+
+<div style="margin-bottom:170px">
+
+    <div class="container mb-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="table-responsive">
+                    <table class="table  table-striped" style="outline-style: solid;">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th class="text-right">Price</th>
+                                <th class="text-right">Quantity</th>
+                                <th class="text-right">Sub Total</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.CartItems)
+                            {
+                                <tr>
+                                    <td>@item.Name</td>
+                                    <td class="text-right">@((item.Price / 1M).ToString("0.00")) €</td>
+                                    <td class="text-right">@item.Quantity</td>
+                                    <td class="text-right">@(((item.Price * item.Quantity) / 1M).ToString("0.00")) €</td>
+                                    <td class="text-right">
+                                        @using (Html.BeginForm("Delete", "EShop", FormMethod.Post))
+                                        {
+                                            @Html.Hidden("ProductId", item.ProductId)
+                                            <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                            @if (!Model.CartItems.Any())
+                            {
+                                <tr>
+                                    <td colspan="5">No items in shopping cart</td>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="3"><strong>Total</strong></td>
+                                <td class="text-right"><strong>@((Model.CartItems.Sum(x => x.Price * x.Quantity) / 1M).ToString("0.00")) €</strong></td>
+                                <td></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                
+
+                    <div class="form-group" style="float:right">
+                        
+                        <form id="myContainer" method="post" action="@Url.Action("Checkout", "EShop")"></form>
+
+                        <script>
+                            window.paypalCheckoutReady = function () {
+
+                                paypal.checkout.setup('TQFPH7KQNCHCQ',
+                                    {
+                                        environment: 'sandbox',
+                                        container: 'myContainer'
+                                    });
+
+                            };</script>
+                        <script src="//www.paypalobjects.com/api/checkout.js" async></script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+@section scripts{
+
+ 
+
+
+    @if (TempData["AddMessage"] != null)
+    {
+        <script>
+           
+            $(document).ready(function () {
+                alert("You have successfully added an item to your Cart!");
+            });
+                     
+        </script>
+    }
+
+}
+
+
+

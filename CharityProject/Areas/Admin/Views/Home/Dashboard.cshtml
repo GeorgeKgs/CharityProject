@@ -1,0 +1,311 @@
+﻿
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+    <style>
+      
+
+    </style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+<div class="row">
+    <div style="text-align:center" class="col-lg-7">
+        <button id="showdata" class="btn btn-primary"> Show Data</button>
+    </div>
+    <div class="col-lg-7">
+        <canvas id="bar-chart-horizontal" style=" width:500px; height:300px; "></canvas>
+    </div>
+
+
+    <div class="col-lg-4">
+
+        @Html.Partial("_PartialCalendar")
+    </div>
+
+</div>
+
+<div class="row">
+
+
+
+</div>
+
+<hr />
+<div class="row" style="margin-top:20px; margin-bottom:20px">
+
+    <div class="col-lg-6">
+        <canvas id="donation-chart"></canvas>
+    </div>
+    <div class="col-lg-6">
+        <canvas id="sub-chart"></canvas>
+    </div>
+
+</div>
+<hr />
+
+
+
+<div class="row">
+
+    <div class="col-lg-6">
+        <canvas id="line-chart"></canvas>
+    </div>
+
+    <div class="col-lg-6" style="margin-bottom:35px">
+        <canvas id="doughnut-chart"></canvas>
+    </div>
+
+   
+
+</div>
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+
+
+<script>
+
+ 
+
+    var Donations = function () {
+
+
+        var PartnersDonations = [];
+
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json",
+            url: "@Url.Action("PartnersDonations", "Statistics", new { area="Admin" })",
+
+            success: function (data) {
+                PartnersDonations = data;
+
+
+                new Chart(document.getElementById("donation-chart"), {
+                    type: 'pie',
+                    data: {
+                        labels: PartnersDonations.Names,
+                        datasets: [{
+                            label: "Donations",
+                            backgroundColor: ["#eec900", "#6dc066", "#957b5f", "#790000", "#6200ea ",
+                                              "#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+                            data: PartnersDonations.Numbers
+                        }]
+                    },
+                    options: {
+                        title: {
+                            display: true,
+                            text: 'Donations Number per Partner'
+                        }
+                    }
+                });
+
+
+
+            }
+        }).promise();
+    };
+
+
+
+   var Subscriptions = function () {
+
+
+        var PartnersSubs = [];
+
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json",
+            url: "@Url.Action("PartnersSubs", "Statistics", new { area="Admin" })",
+
+            success: function (data) {
+                PartnersSubs = data;
+
+
+
+                new Chart(document.getElementById("sub-chart"), {
+                    type: 'pie',
+                    data: {
+                        labels: PartnersSubs.Names,
+                        datasets: [{
+                            label: "subscriptions",
+                            backgroundColor: ["#6200ea", "#9a0000", "#e1eeff", "#9ae0d1", "#6200ea ",
+                                              "#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+                            data: PartnersSubs.Numbers
+                        }]
+                    },
+                    options: {
+                        title: {
+                            display: true,
+                            text: 'Subscriptions Number per Partner'
+                        }
+                    }
+                });
+
+
+
+            }
+        }).promise();
+    };
+
+
+
+
+     var Countries = function () {
+
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json",
+            url: "@Url.Action("PartnersCountries", "Statistics", new { area="Admin" })",
+
+            success: function (data) {
+
+
+                        new Chart(document.getElementById("doughnut-chart"), {
+                                type: 'doughnut',
+                                data: {
+                                  labels: data.Countries,
+                                  datasets: [
+                                    {
+                                      label: "Projects",
+                                          backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850",
+                                              "#6200ea", "#9a0000", "#e1eeff", "#9ae0d1", "#6200ea ",
+                                              "#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"
+                                          ],
+                                      data: data.Numbers
+                                    }
+                                  ]
+                               },
+                          
+
+                                options: {
+                                  title: {
+                                    display: true,
+                                    text: 'Total Projects per Country'
+                                  }
+                                }
+                        });
+
+
+            }
+        }).promise();
+    };
+
+
+
+    var Numbers=[];
+
+    $.when($(document).ready(function () {
+
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json",
+            url: "@Url.Action("GetStats", "Statistics", new { area="Admin" })",
+
+            success: function (data) {
+                Numbers=data;
+            }
+        }).promise();
+
+       
+    })).then(function () {
+
+        $("#showdata").click(function (e) {
+            e.preventDefault();
+
+             console.log(Numbers);
+
+            new Chart(document.getElementById("bar-chart-horizontal"), {
+                        type: 'horizontalBar',
+                        data: {
+                          labels:  ["Donations", "Subscriptions", "Partners", "Signatures", "Products"],
+                          datasets: [
+                            {
+                              label: "Database Data",
+                              backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+                              data: Numbers
+                            }
+                          ]
+                        },
+                options: {
+                   
+                    scales: {
+        xAxes: [{
+            ticks: {
+                beginAtZero: true,
+                max: 15
+            }
+        }]
+    },
+                         legend: { display: false },
+                         title: {
+                            display: true,
+                              text: 'Site Statistics',
+                         },
+                          responsive: true
+
+                }
+            });
+
+
+
+                new Chart(document.getElementById("line-chart"), {
+                      type: 'line',
+                      data: {
+                        labels: [1500,1600,1700,1750,1800,1850,1900,1950,1999,2050],
+                        datasets: [{ 
+                            data: [86,114,106,106,107,111,133,221,783,2478],
+                            label: "Africa",
+                            borderColor: "#3e95cd",
+                            fill: false
+                          }, { 
+                            data: [282,350,411,502,635,809,947,1402,3700,5267],
+                            label: "Asia",
+                            borderColor: "#8e5ea2",
+                            fill: false
+                          }, { 
+                            data: [168,170,178,190,203,276,408,547,675,734],
+                            label: "Europe",
+                            borderColor: "#3cba9f",
+                            fill: false
+                          }, { 
+                            data: [40,20,10,16,24,38,74,167,508,784],
+                            label: "Latin America",
+                            borderColor: "#e8c3b9",
+                            fill: false
+                          }, { 
+                            data: [6,3,2,2,7,26,82,172,312,433],
+                            label: "North America",
+                            borderColor: "#c45850",
+                            fill: false
+                          }
+                        ]
+                      },
+                      options: {
+                        title: {
+                          display: true,
+                          text: 'World population per region (in millions)'
+                        }
+                      }
+                });
+
+
+
+            Donations();
+            Subscriptions();
+            Countries();
+           
+        });
+
+
+
+     
+    });
+
+
+</script>

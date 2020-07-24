@@ -1,0 +1,62 @@
+﻿@model IEnumerable<CharityProject.Entities.DomainClasses.Plan>
+
+@{
+    ViewBag.Title = "Index";
+}
+    <div style="height:80px; background-color:darkseagreen">
+
+    </div>
+<h2>Plans</h2>
+
+@if (User.IsInRole("admin"))
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Donations)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Subscriptions)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category)
+                </td>
+                <td>
+                    @Html.DropDownListFor(modelItem => item.Donations, new SelectList(item.Donations, "DonationId", "Title"), null,
+                        new { @class = "dropdown-menu-right", style = "width:220px;" })
+                </td>
+                <td>
+                    @Html.DropDownListFor(modelItem => item.Subscriptions, new SelectList(item.Subscriptions, "Id", "Title"), null,
+                        new { @class = "dropdown-menu-right", style = "width:220px;" })
+                </td>
+
+
+
+                <td>
+                    @Html.ActionLink("See More", "Details", new { id = item.PlanId }) 
+
+                    @if (User.IsInRole("admin"))
+                     {
+                      @Html.ActionLink("Edit", "Edit", new { id = item.PlanId }) 
+                      @Html.ActionLink("Delete", "Delete", new { id = item.PlanId })
+                     }
+
+                </td>
+            </tr>
+        }
+
+    </table>

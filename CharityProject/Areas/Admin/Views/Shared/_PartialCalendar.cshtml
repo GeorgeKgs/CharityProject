@@ -1,0 +1,23 @@
+﻿<link rel="stylesheet" href="~/calendar/style.css">
+<link rel="stylesheet" href="~/calendar/vanilla-calendar-min.css">
+<script src="~/calendar/vanilla-calendar-min.js"></script>
+
+<div id="myCalendar" class="vanilla-calendar" style="margin-bottom: 20px"></div>
+
+
+
+
+<script>
+    let pastDates = true, availableDates = false, availableWeekDays = false
+
+    let calendar = new VanillaCalendar({
+        selector: "#myCalendar",
+        months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+        shortWeekday: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        onSelect: (data, elem) => {
+            console.log(data, elem)
+        }
+    })
+
+   
+</script>

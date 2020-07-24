@@ -1,0 +1,166 @@
+﻿
+@{
+    ViewBag.Title = "AboutUs";
+}
+
+<style>
+    .parallax {
+        /* The image used */
+        background-image: url('/images//chandelier.jpg');
+        /* Set a specific height */
+        height: 400px;
+        /* Create the parallax scrolling effect */
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+
+
+
+
+</style>
+
+<link href="~/Content/flex.css" rel="stylesheet" />
+
+<div class="hero-wrap " style="background-image: url('/images/Parallax Charity2.jpeg');" data-stellar-background-ratio="0.5">
+
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center " data-scrollax-parent="true">
+            <div class="col-md-7 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
+                <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
+                    <span class="mr-2">
+                        @Html.ActionLink("Home", "Index", "Home")
+                    </span> <span>About Us</span>
+                </p>
+                <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"></h1>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="ftco-section" style=" background: rgb(106,128,156);background: linear-gradient(0deg, rgba(106,128,156,1) 5%, rgba(28,38,43,0.9948354341736695) 100%);">
+    <div class="container">
+        <div class="row d-flex">
+            <div class="col-md-6 pl-md-5 ftco-animate">
+                <h2 class="mb-4 font-weight-bolder text-white">Welcome to Brothers in Alms</h2>
+                <p class="text-white">Founded in 2019, we are a group of friends whose mission is to draw attention from more communitites and inform them about the programms and works of our partners throughout the globe.</p>
+                <p class="text-white">We are assisting our partners' causes by providing fundraisers for their respective programs in the form of donations and subscriptions.</p>
+                <p class="text-white">100% of the funds gathered are sent directly to our partners' donor pools in order to strengthen their emergency programs.</p>
+                <p class="text-white font-italic font-weight-lighter">For People, for a change.</p>
+            </div>
+            <div class="col-md-6 d-flex ftco-animate">
+                <div class="img img-about align-self-stretch" style="background-image: url('/images/FullLogoOrange.png'); width: 100%;">
+                </div>
+            </div>
+        </div>
+        <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"></h1>
+    </div>
+</section>
+
+<div class="parallax container-fluid "></div>
+
+<section class="ftco-section " style="background: rgb(253,126,20); 
+    background: linear-gradient(0deg, rgba(253,126,20,1)   0%, rgba(106,128,156,1)  85%);">
+    <div class="container">
+        <div class="row justify-content-center mb-5 pb-3">
+            <div class="col-md-7 heading-section ftco-animate text-center">
+                <h2 class="mb-4">Meet the Creators</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 d-flex mb-sm-4 ftco-animate">
+                <div class="staff">
+                    <div class="d-flex mb-4">
+                        <div class="img" style="background-image: url(images/person_1.jpg);"></div>
+                        <div class="info ml-4">
+                            <h3><a href="teacher-single.html">Charalampos Kourkoulis</a></h3>
+                            <span class="position">Placeholder text</span>
+                            @*<div class="text">
+                                    <p>Donated <span>$300</span> for <a href="#">Children Needs Food</a></p>
+                                </div>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 d-flex mb-sm-4 ftco-animate">
+                <div class="staff">
+                    <div class="d-flex mb-4">
+                        <div class="img" style="background-image: url(/images/person_2.jpg);"></div>
+                        <div class="info ml-4">
+                            <h3><a href="teacher-single.html">Stylianos Agius</a></h3>
+                            <span class="position">Placeholder text</span>
+                            @*<div class="text">
+                                    <p>Donated <span>$150</span> for <a href="#">Children Needs Food</a></p>
+                                </div>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 d-flex mb-sm-4 ftco-animate">
+                <div class="staff">
+                    <div class="d-flex mb-4">
+                        <div class="img" style="background-image: url(images/person_3.jpg);"></div>
+                        <div class="info ml-4">
+                            <h3><a href="teacher-single.html">George Kagas</a></h3>
+                            <span class="position">Placeholder text</span>
+                            @*<div class="text">
+                                    <p>Donated <span>$250</span> for <a href="#">Children Needs Food</a></p>
+                                </div>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+@* --------------FLEX BOX CSS GALLERY------------------------- *@
+<div class="container"><h3>Gallery</h3></div>
+<div class="row" style="margin:20px">
+    <div class="column">
+        <img src="~/images/bg_1.jpg" style="width:100%">
+        <img src="~/images/bg_2.jpg" style="width:100%">
+        <img src="~/images/bg_3.jpg" style="width:100%">
+        <img src="~/images/bg_4.jpg" style="width:100%">
+        <img src="~/images/bg_5.jpg" style="width:100%">
+        <img src="~/images/bg_6.jpg" style="width:100%">
+        <img src="~/images/bg_7.jpg" style="width:100%">
+        <img src="~/images/22.jpg" style="width:100%">
+    </div>
+
+    <div class="column">
+        <img src="~/images/cause-1.jpg" style="width:100%">
+        <img src="~/images/cause-2.jpg" style="width:100%">
+        <img src="~/images/cause-3.jpg" style="width:100%">
+        <img src="~/images/cause-4.jpg" style="width:100%">
+        <img src="~/images/cause-5.jpg" style="width:100%">
+        <img src="~/images/cause-6.jpg" style="width:100%">
+        <img src="~/images/11.jpg" style="width:100%">
+    </div>
+
+    <div class="column">
+        <img src="~/images/event-1.jpg" style="width:100%">
+        <img src="~/images/event-2.jpg" style="width:100%">
+        <img src="~/images/event-3.jpg" style="width:100%">
+        <img src="~/images/event-4.jpg" style="width:100%">
+        <img src="~/images/event-5.jpg" style="width:100%">
+        <img src="~/images/event-6.jpg" style="width:100%">
+        <img src="~/images/about.jpg" style="width:100%">
+
+    </div>
+
+    <div class="column">
+        <img src="~/images/image_3.jpg" style="width:100%">
+        <img src="~/images/image_4.jpg" style="width:100%">
+        <img src="~/images/image_5.jpg" style="width:100%">
+        <img src="~/images/image_6.jpg" style="width:100%">
+        <img src="~/images/partn.jpg" style="width:100%">
+        <img src="~/images/reema.jpg" style="width:100%">
+        <img src="~/images/bg_2.jpg" style="width:100%">
+        <img src="~/images/33.jpg" style="width:100%">
+    </div>
+</div>

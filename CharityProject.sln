@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29409.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CharityProject.Web", "CharityProject\CharityProject.Web.csproj", "{37854E12-FC30-47D5-9E26-0D783B5D0633}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CharityProject.Entities", "CharityProject.Entities\CharityProject.Entities.csproj", "{C481EACE-6F0C-4B71-A140-F7528A8C6760}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CharityProject.Database", "CharityProject.Database\CharityProject.Database.csproj", "{A35BEA9C-AE95-45D7-8339-936512294236}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CharityProject.Services", "CharityProject.Services\CharityProject.Services.csproj", "{A1726325-F953-43D2-BD99-A8F9309ED848}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CharityProject.UnitTesting", "CharityProject.UnitTesting\CharityProject.UnitTesting.csproj", "{6EBB5229-2411-4775-9AC7-986506B8EFEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CharityProject.WebAPI", "CharityProject.WebAPI\CharityProject.WebAPI.csproj", "{6A0B0241-F36A-4813-B0E8-85024FE79F75}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{37854E12-FC30-47D5-9E26-0D783B5D0633}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37854E12-FC30-47D5-9E26-0D783B5D0633}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37854E12-FC30-47D5-9E26-0D783B5D0633}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37854E12-FC30-47D5-9E26-0D783B5D0633}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C481EACE-6F0C-4B71-A140-F7528A8C6760}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C481EACE-6F0C-4B71-A140-F7528A8C6760}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C481EACE-6F0C-4B71-A140-F7528A8C6760}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C481EACE-6F0C-4B71-A140-F7528A8C6760}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A35BEA9C-AE95-45D7-8339-936512294236}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A35BEA9C-AE95-45D7-8339-936512294236}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A35BEA9C-AE95-45D7-8339-936512294236}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A35BEA9C-AE95-45D7-8339-936512294236}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1726325-F953-43D2-BD99-A8F9309ED848}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1726325-F953-43D2-BD99-A8F9309ED848}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1726325-F953-43D2-BD99-A8F9309ED848}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1726325-F953-43D2-BD99-A8F9309ED848}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EBB5229-2411-4775-9AC7-986506B8EFEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EBB5229-2411-4775-9AC7-986506B8EFEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EBB5229-2411-4775-9AC7-986506B8EFEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EBB5229-2411-4775-9AC7-986506B8EFEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A0B0241-F36A-4813-B0E8-85024FE79F75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A0B0241-F36A-4813-B0E8-85024FE79F75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A0B0241-F36A-4813-B0E8-85024FE79F75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A0B0241-F36A-4813-B0E8-85024FE79F75}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ECC206A0-063D-4D31-B0A1-9EAB297CD52D}
+	EndGlobalSection
+EndGlobal

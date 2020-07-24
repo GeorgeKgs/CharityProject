@@ -1,0 +1,38 @@
+﻿@using Microsoft.AspNet.Identity
+
+
+
+<div id="sidebar">
+
+    <div class="toggle-btn" onclick="toggleSidebar()">
+        <a >
+            <span></span>
+
+            <span></span>
+
+            <span></span>
+        </a>
+
+    </div>
+    <ul>
+        <li>@Html.ActionLink("Home", "Index", "Home")</li>     
+        <li>@Html.ActionLink("Donations", "Index", "Donation")</li>
+        <li>@Html.ActionLink("Subscriptions", "Index", "Subscription")</li>
+        <li>@Html.ActionLink("Partners", "Index", "Partner")</li>
+        <li>@Html.ActionLink("Plans", "Index", "Plan")</li>
+        <li>@Html.ActionLink("Products", "Index", "Product")</li>
+        <li>@Html.ActionLink("Chat", "Chat", "Home")</li>
+    </ul>
+
+    @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+    {
+        @Html.AntiForgeryToken()
+        <ul>
+            <li>
+                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            </li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        </ul>
+    }
+</div>
+
